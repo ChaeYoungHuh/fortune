@@ -1,36 +1,19 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🥠 Tag Fortune
 
-## Getting Started
+> ID20012(A): Design Studio 1 — Industrial Design Department, KAIST
 
-First, run the development server:
+When you tap an NFC tag, a fortune cookie slip with today's fortune will unfold before you.
+(The installation will be available at the entrance of the Industrial Design building starting June 5, 2026.)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## How does it work?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The moment you tap the tag, a new fortune is assigned to you, and it will remain the same even if you refresh the page.  
+You must tap the tag again to receive a new fortune.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+One line of fortune for today, and a lucky color.
+Check yours out!
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Built with
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- [Next.js](https://nextjs.org) + TypeScript
+- Deployed on [Vercel](https://vercel.com)
