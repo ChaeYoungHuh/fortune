@@ -1,4 +1,5 @@
 import { fortunes } from "./fortunes";
+import ShareButton from "./ShareButton";
 
 const luckyColors = [
   { ko: "루비 레드",    en: "Ruby Red",      hex: "#9B1C1C" },
@@ -56,7 +57,7 @@ export default async function Home({
       style={{ background: "radial-gradient(ellipse at center, #3b1f00 0%, #1a0f00 70%)" }}
     >
       <p
-        className="mb-10 tracking-[0.35em] uppercase text-xs opacity-80"
+        className="mb-10 tracking-[0.35em] uppercase opacity-90"
         style={{ color: "#c8a96e", fontFamily: "var(--font-playfair), serif" }}
       >
         KAIST Tag Fortune
@@ -64,6 +65,7 @@ export default async function Home({
 
       <div className="animate-unfold w-full max-w-sm">
         <div
+          id="fortune-slip"
           className="paper-texture dashed-border rounded-sm px-8 py-8 relative"
           style={{ boxShadow: "0 8px 40px rgba(0,0,0,0.6), inset 0 0 60px rgba(180,140,80,0.08)" }}
         >
@@ -72,9 +74,10 @@ export default async function Home({
             style={{ background: "repeating-linear-gradient(90deg, #8b6914 0px, #8b6914 6px, transparent 6px, transparent 12px)" }}
           />
 
-          <p className="fortune-ko text-center mb-5">
+          <p className="fortune-ko text-center mb-5" style={{ fontSize: "1.1em" }}>
             {fortune.ko}
           </p>
+     
 
           <div className="flex items-center gap-3 my-4 opacity-30">
             <div className="flex-1 h-px" style={{ background: "#8b6914" }} />
@@ -110,9 +113,11 @@ export default async function Home({
         </div>
       </div>
 
+      <ShareButton targetId="fortune-slip" />
+
       <p
-        className="mt-10 text-xs opacity-40"
-        style={{ color: "#c8a96e", fontFamily: "var(--font-playfair), serif", fontStyle: "italic" }}
+        className="mt-8 text-sm opacity-40"
+        style={{ color: "#c8a96e", fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontSize: "1.125rem" }}
       >
         check <a href="https://cyhuh.com" target="_blank" className="underline">cyhuh.com</a>
       </p>
