@@ -116,10 +116,10 @@ export default async function Home({
       <ShareButton targetId="fortune-slip" />
 
       <p
-        className="mt-8 text-sm opacity-40"
-        style={{ color: "#c8a96e", fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontSize: "1.125rem" }}
+        className="mt-8 text-sm opacity-30"
+        style={{ color: "#c8a96e", fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontSize: "1.1rem" }}
       >
-        check <a href="https://cyhuh.com" target="_blank" className="underline">cyhuh.com</a>
+        by <a href="https://cyhuh.com" target="_blank" className="underline">cyhuh.com</a>
       </p>
     </main>
   );
