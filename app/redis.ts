@@ -18,3 +18,7 @@ export async function trackVisit(token: string): Promise<void> {
 export async function getVisits(): Promise<number> {
   return (await redis.get<number>("fortune:visits")) ?? 0;
 }
+
+export async function resetVisits(): Promise<void> {
+  await redis.set("fortune:visits", 0);
+}
