@@ -17,10 +17,6 @@ const playfair = Playfair_Display({
 export const metadata: Metadata = {
   title: "Tag Fortune",
   description: "Your daily fortune",
-  icons: {
-    icon: "/icon.png",
-    apple: "/icon.png",
-  },
 };
 
 export default function RootLayout({

@@ -1,5 +1,6 @@
 import { fortunes } from "./fortunes";
 import ShareButton from "./ShareButton";
+import { trackVisit } from "./redis";
 
 const luckyColors = [
   { ko: "루비 레드",    en: "Ruby Red",      hex: "#9B1C1C" },
@@ -50,6 +51,7 @@ export default async function Home({
   const idx = token ? tokenToIndex(token, fortunes.length) : 0;
   const fortune = fortunes[idx];
   const color = luckyColors[token ? tokenToColorIndex(token) : 0];
+  if (token) await trackVisit(token);
 
   return (
     <main
@@ -121,6 +123,7 @@ export default async function Home({
       >
         by <a href="https://cyhuh.com" target="_blank" className="underline">cyhuh.com</a>
       </p>
+
     </main>
   );
 }
