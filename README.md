@@ -4,6 +4,8 @@
 
 When you tap an NFC tag, a fortune cookie slip with today's fortune will unfold before you.
 (The installation will be available at the entrance of the Industrial Design building starting June 5, 2026.)
+<img width="460" height="571" alt="Image" src="https://github.com/user-attachments/assets/be826f90-27d8-42cb-8573-dc507fa2e217" />
+
 
 ## How does it work?
 
