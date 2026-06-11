@@ -22,7 +22,11 @@
 
 # misc
 .DS_Store
+Thumbs.db
 *.pem
+*.key
+*.cert
+*.p12
 
 # debug
 npm-debug.log*

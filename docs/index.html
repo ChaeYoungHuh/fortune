@@ -1,94 +1,77 @@
 <!doctype html>
-<html lang="en">
+<html lang="ko">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tag Fortune - Development Phase 2</title>
-    <meta
-      name="description"
-      content="Development Phase 2 prototype report for Tag Fortune."
-    />
+    <title>KAIST Tag Fortune</title>
+    <meta name="description" content="NFC 태그 하나로 오늘의 운세를. KAIST Tag Fortune 프로젝트." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <main class="container">
-      <header class="section">
-        <p class="kicker">ID20012(A) Design Studio 1</p>
-        <h1>Tag Fortune - Development Phase 2</h1>
-        <p class="lead">
-          A quick intervention prototype installed near the entrance to test
-          whether a small NFC-triggered action can shift behavior at the moment
-          of card tagging.
-        </p>
-      </header>
+    <main>
 
-      <section class="section">
-        <h2>Prototype Snapshot</h2>
-        <figure>
-          <img
-            src="https://github.com/user-attachments/assets/be826f90-27d8-42cb-8573-dc507fa2e217"
-            alt="Lucky reader installation prototype"
-          />
-          <figcaption>
-            Lucky reader mock-up with NFC tag installed at the site.
-          </figcaption>
-        </figure>
+      <section class="hero">
+        <p class="eyebrow">ID20012(A) Design Studio 1</p>
+        <h1>KAIST Tag Fortune</h1>
+        <p class="subtitle">Tap your card. Receive your fortune.</p>
       </section>
 
-      <section class="section">
-        <h2>What We Observed</h2>
-        <p>
-          People naturally pause to tag their card before entering the building.
-          Placing an NFC interaction at that exact moment lowered friction to
-          participation. Most users tapped once, viewed the fortune quickly, and
-          moved on without disrupting flow at the entrance.
-        </p>
-      </section>
-
-      <section class="section">
-        <h2>Phase 2 Reflection</h2>
-        <div class="qa">
-          <h3>Did it work as intended?</h3>
-          <p>
-            Mostly yes. The intervention was understandable and fast enough to
-            use in transit.
-          </p>
-
-          <h3>
-            Is the idea still right, or did the prototype reveal something
-            better?
-          </h3>
-          <p>
-            The core idea still holds. The prototype suggests that placement and
-            physical form matter as much as screen content.
-          </p>
-
-          <h3>What will change before the real execution?</h3>
-          <p>
-            Improve visual cues on the object, shorten interaction time, and
-            refine messaging so first-time users understand the action instantly.
-          </p>
+      <section class="image-section">
+        <div class="slip-wrapper">
+          <img src="./fortune.png" alt="Tag Fortune — fortune slip on phone screen" />
         </div>
       </section>
 
-      <section class="section">
-        <h2>What This Webpage Adds</h2>
+      <section class="about">
+        <div class="divider"><span>✦</span></div>
+        <h2>About the Project</h2>
         <p>
-          This page is not only a passive record. At the site, opening this URL
-          gives visitors context (why the object exists), immediate interaction
-          (fortune experience), and evidence of iteration (what changed and why).
-          It extends the physical intervention into a documented, living part of
-          the project.
+          KAIST Tag Fortune is a lightweight NFC interaction installed near the building entrance.
+          When students tap their access card to enter, a small prompt invites them to also tap
+          the NFC reader beside the door — and in return, they receive a short fortune for the day.
+          The intervention takes under three seconds, adds no friction to the existing flow, and
+          turns a routine gesture into a moment of pause and small delight.
+        </p>
+        <p>
+          The web experience mirrors that physical slip of paper: a single fortune appears on a
+          warm, aged-paper card against a dark background. Each tag generates a unique fortune
+          and a lucky color, both derived from the tag token so the result is consistent but
+          unpredictable across different cards.
         </p>
       </section>
 
-      <section class="section">
-        <h2>Links</h2>
-        <ul>
-          <li><a href="https://tag-fortune.vercel.app/">Live Project</a></li>
-          <li><a href="https://github.com/ChaeYoungHuh/fortune">GitHub Repository</a></li>
-        </ul>
+      <section class="details">
+        <div class="detail-card">
+          <p class="detail-label">Context</p>
+          <p class="detail-value">KAIST building entrance, NFC tap point</p>
+        </div>
+        <div class="detail-card">
+          <p class="detail-label">Interaction</p>
+          <p class="detail-value">Fake card key reader tap → fortune + lucky color</p>
+        </div>
+        <div class="detail-card">
+          <p class="detail-label">Stack</p>
+          <p class="detail-value">Next.js · Upstash Redis · Vercel</p>
+        </div>
       </section>
+
+      <section class="cta-section">
+        <p class="cta-prompt">View the deployed fortune site</p>
+        <a href="https://fortune-lemon.vercel.app/" target="_blank" class="cta-btn cta-btn--large">
+          Open Tag Fortune
+        </a>
+        <a href="https://github.com/ChaeYoungHuh/fortune" target="_blank" class="ghost-btn">
+          View on GitHub
+        </a>
+      </section>
+
+      <footer>
+        <p>by <a href="https://cyhuh.com" target="_blank">cyhuh.com</a></p>
+      </footer>
+
     </main>
   </body>
 </html>

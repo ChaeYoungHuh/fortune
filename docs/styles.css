@@ -1,108 +1,245 @@
-* {
+*, *::before, *::after {
   box-sizing: border-box;
 }
 
-html,
-body {
+html, body {
   margin: 0;
   padding: 0;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-  color: #1f2937;
-  background: #f8fafc;
+  background: radial-gradient(ellipse at center, #3b1f00 0%, #1a0f00 70%);
+  min-height: 100vh;
+  color: #c8a96e;
+  font-family: 'Playfair Display', serif;
 }
 
-.container {
-  max-width: 840px;
+main {
+  max-width: 680px;
   margin: 0 auto;
-  padding: 40px 20px 72px;
+  padding: 80px 24px 60px;
 }
 
-.section {
-  background: #ffffff;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 24px;
-  margin-bottom: 16px;
+/* ── Hero ── */
+.hero {
+  text-align: center;
+  margin-bottom: 64px;
 }
 
-.kicker {
-  margin: 0 0 4px;
-  font-size: 13px;
-  color: #6b7280;
-}
-
-h1,
-h2,
-h3 {
-  margin-top: 0;
-  color: #111827;
+.eyebrow {
+  margin: 0 0 20px;
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.55;
+  font-style: normal;
 }
 
 h1 {
-  margin-bottom: 8px;
-  font-size: 30px;
+  margin: 0 0 12px;
+  font-size: clamp(2rem, 6vw, 3rem);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #e8d5a3;
+  line-height: 1.2;
 }
 
-h2 {
-  margin-bottom: 10px;
-  font-size: 21px;
+.subtitle {
+  margin: 0 0 36px;
+  font-size: 1.1rem;
+  font-style: italic;
+  opacity: 0.7;
+  letter-spacing: 0.04em;
 }
 
-h3 {
-  margin-bottom: 4px;
-  font-size: 17px;
+/* ── CTA Button ── */
+.cta-btn {
+  display: inline-block;
+  padding: 14px 36px;
+  border: 1px solid #c8a96e;
+  border-radius: 2px;
+  color: #1a0f00;
+  background: #c8a96e;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
 }
 
-p {
-  margin: 0 0 10px;
+.cta-btn:hover {
+  background: #e8d5a3;
+  border-color: #e8d5a3;
 }
 
-.lead {
-  margin-bottom: 0;
-  font-size: 17px;
-  color: #374151;
+/* ── Image Section ── */
+.image-section {
+  margin-bottom: 64px;
+  display: flex;
+  justify-content: center;
 }
 
-figure {
-  margin: 0;
+.slip-wrapper {
+  width: 100%;
+  max-width: 200px;
+  border-radius: 4px;
+  overflow: hidden;
 }
 
-img {
+.slip-wrapper img {
   display: block;
   width: 100%;
   height: auto;
-  border-radius: 10px;
-  border: 1px solid #e5e7eb;
 }
 
-figcaption {
-  margin-top: 8px;
-  font-size: 14px;
-  color: #6b7280;
+/* ── About ── */
+.about {
+  margin-bottom: 56px;
 }
 
-.qa h3 {
-  margin-top: 14px;
+.divider {
+  text-align: center;
+  margin-bottom: 32px;
+  opacity: 0.35;
+  font-size: 0.75rem;
+  letter-spacing: 0.3em;
 }
 
-.qa p {
+.divider::before,
+.divider::after {
+  content: '─────';
+  margin: 0 12px;
+  opacity: 0.6;
+}
+
+h2 {
+  margin: 0 0 20px;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #e8d5a3;
+  letter-spacing: 0.05em;
+  text-align: center;
+}
+
+.about p {
+  margin: 0 0 16px;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 1rem;
+  line-height: 2;
+  color: #c8a96e;
+  opacity: 0.85;
+  letter-spacing: 0.03em;
+  word-break: keep-all;
+}
+
+.about p:last-child {
   margin-bottom: 0;
 }
 
-ul {
+/* ── Detail Cards ── */
+.details {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 64px;
+}
+
+.detail-card {
+  border: 1px dashed rgba(200, 169, 110, 0.3);
+  border-radius: 2px;
+  padding: 20px 18px;
+  text-align: center;
+}
+
+.detail-label {
+  margin: 0 0 6px;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  opacity: 0.45;
+  font-style: normal;
+}
+
+.detail-value {
   margin: 0;
-  padding-left: 20px;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  color: #e8d5a3;
+  line-height: 1.5;
 }
 
-a {
-  color: #2563eb;
+/* ── CTA Section ── */
+.cta-section {
+  text-align: center;
+  margin-bottom: 72px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.cta-prompt {
+  margin: 0;
+  font-family: 'Nanum Myeongjo', serif;
+  font-size: 1.15rem;
+  letter-spacing: 0.06em;
+  opacity: 0.75;
+  margin-bottom: 8px;
+}
+
+.cta-btn--large {
+  padding: 16px 48px;
+  font-size: 1rem;
+}
+
+.ghost-btn {
+  display: inline-block;
+  padding: 10px 28px;
+  border: 1px solid rgba(200, 169, 110, 0.35);
+  border-radius: 2px;
+  color: #c8a96e;
+  font-family: 'Playfair Display', serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
   text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.2s, border-color 0.2s;
 }
 
-a:hover {
+.ghost-btn:hover {
+  opacity: 1;
+  border-color: #c8a96e;
+}
+
+/* ── Footer ── */
+footer {
+  text-align: center;
+  border-top: 1px solid rgba(200, 169, 110, 0.12);
+  padding-top: 28px;
+}
+
+footer p {
+  margin: 0;
+  font-size: 0.8rem;
+  font-style: italic;
+  opacity: 0.35;
+}
+
+footer a {
+  color: inherit;
   text-decoration: underline;
+}
+
+footer a:hover {
+  opacity: 0.7;
+}
+
+@media (max-width: 480px) {
+  main {
+    padding: 60px 20px 48px;
+  }
+
+  .details {
+    grid-template-columns: 1fr;
+  }
 }
