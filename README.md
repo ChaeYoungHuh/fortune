@@ -29,12 +29,10 @@ The goal was zero friction. The tap was already happening. I just gave it somewh
 <tr>
 <td><img src="docs/proto.png" width="220" alt="Prototype object" /></td>
 <td><img src="docs/lacker.png" width="220" alt="Lacquer painting process" /></td>
-<td><img src="docs/plasticcase.jpg" width="220" alt="Plastic case from Coupang" /></td>
 </tr>
 <tr>
 <td align="center"><sub>Final prototype</sub></td>
 <td align="center"><sub>Painting with black lacquer</sub></td>
-<td align="center"><sub>Plastic case (Coupang)</sub></td>
 </tr>
 </table>
 
