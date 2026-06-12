@@ -274,7 +274,7 @@
     <div class="phone-widget" id="phoneWidget">
       <div class="phone-arrow" aria-hidden="true">⬆</div>
       <img class="phone-img" src="./phone.png" alt="Drag to main image" draggable="false" />
-      <p class="phone-caption">tag this phone<br>at the fake reader!</p>
+      <p class="phone-caption">drag this phone<br>at the fake reader!</p>
     </div>
 
     <button class="lang-toggle" onclick="toggleLang()" aria-label="언어 전환">
@@ -417,15 +417,11 @@
         let lpTimer = null, tDrag = false, tox = 0, toy = 0, tsx = 0, tsy = 0;
 
         function showArrowBriefly() {
-          const arw = ph.querySelector('.phone-arrow');
-          if (!arw) return;
           if (window._updateArrow) window._updateArrow();
-          arw.style.opacity = '1';
-          arw.style.animation = 'arrow-blink 0.5s ease-in-out infinite';
-          clearTimeout(arw._tapTimer);
-          arw._tapTimer = setTimeout(function() {
-            arw.style.opacity = '';
-            arw.style.animation = '';
+          ph.classList.add('arrow-visible');
+          clearTimeout(ph._arrowTimer);
+          ph._arrowTimer = setTimeout(function() {
+            ph.classList.remove('arrow-visible');
           }, 2000);
         }
 

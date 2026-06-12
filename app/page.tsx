@@ -119,7 +119,7 @@ export default async function Home({
 
       <p
         className="mt-10 text-lg opacity-30"
-        style={{ color: "#c8a96e", fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontSize: "3.5rem" }}
+        style={{ color: "#c8a96e", fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontSize: "1.8rem" }}
       >
         by <a href="https://cyhuh.com" target="_blank" className="underline">cyhuh.com</a>
       </p>

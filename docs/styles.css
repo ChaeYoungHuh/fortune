@@ -692,7 +692,13 @@ h1 em {
   pointer-events: none;
   transition: opacity 0.15s;
 }
-.phone-widget:hover .phone-arrow {
+@media (hover: hover) {
+  .phone-widget:hover .phone-arrow {
+    opacity: 1;
+    animation: arrow-blink 0.5s ease-in-out infinite;
+  }
+}
+.phone-widget.arrow-visible .phone-arrow {
   opacity: 1;
   animation: arrow-blink 0.5s ease-in-out infinite;
 }
@@ -735,8 +741,8 @@ footer a { color: inherit; text-decoration: underline; }
 
 @media (hover: none) and (pointer: coarse) {
   /* mobile: bigger tap target for phone widget */
-  .phone-img { width: 68px; }
-  .phone-caption { font-size: 0.62rem; }
+  .phone-img { width: 80px; }
+  .phone-caption { font-size: 0.75rem; }
   .phone-widget { right: 16px; bottom: 70px; }
   .lang-toggle { bottom: 16px; right: 16px; }
 }
