@@ -1,7 +1,8 @@
-import { getVisits, resetVisits } from "../redis";
+import { getVisits, getVisitTimes } from "../redis";
 import { notFound } from "next/navigation";
 import { revalidatePath } from "next/cache";
 import ResetButton from "./ResetButton";
+import StatsClient from "./StatsClient";
 
 export default async function StatsPage({
   searchParams,
@@ -11,26 +12,47 @@ export default async function StatsPage({
   const { key } = await searchParams;
   if (key !== process.env.STATS_KEY) notFound();
 
-  const visits = await getVisits();
+  const now = Date.now();
+  const defaultStartMs = now - 3 * 60 * 60 * 1000; // 3h
+
+  const [visits, initialTimestamps] = await Promise.all([
+    getVisits(),
+    getVisitTimes(defaultStartMs, now),
+  ]);
 
   async function handleReset() {
     "use server";
-    await resetVisits();
+    await (await import("../redis")).resetVisits();
     revalidatePath(`/stats`);
   }
 
   return (
     <main
-      className="min-h-screen flex flex-col items-center justify-center"
-      style={{ background: "#1a0f00", color: "#c8a96e", fontFamily: "monospace" }}
+      style={{
+        minHeight: "100vh",
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        paddingTop: "3rem",
+        paddingBottom: "4rem",
+        background: "#1a0f00",
+        color: "#c8a96e",
+        fontFamily: "monospace",
+      }}
     >
-      <p style={{ fontSize: "0.7rem", opacity: 0.4, letterSpacing: "0.25em" }}>FORTUNE / STATS</p>
-      <p style={{ fontSize: "5rem", fontWeight: "bold", margin: "1rem 0", lineHeight: 1 }}>
-        {visits.toLocaleString()}
+      <p style={{ fontSize: "0.7rem", opacity: 0.4, letterSpacing: "0.25em", marginBottom: "0.25rem" }}>
+        FORTUNE / STATS
       </p>
-      <p style={{ fontSize: "0.7rem", opacity: 0.35, letterSpacing: "0.15em" }}>TOTAL NFC TAPS</p>
 
-      <ResetButton onReset={handleReset} />
+      <StatsClient
+        statsKey={key!}
+        initialTimestamps={initialTimestamps}
+        initialTotal={visits}
+      />
+
+      <div style={{ marginTop: "3rem" }}>
+        <ResetButton onReset={handleReset} />
+      </div>
     </main>
   );
 }
