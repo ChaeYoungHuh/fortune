@@ -43,3 +43,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# local working files
+work.txt
+tag-visits-chart*.png
+/fortune.png
