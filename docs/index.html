@@ -271,6 +271,8 @@
       <span id="tagCount" class="tag-count">3</span>
     </div>
 
+    <div id="dragHint" class="drag-hint">hold &amp; drag to the reader!</div>
+
     <div class="phone-widget" id="phoneWidget">
       <div class="phone-arrow" aria-hidden="true">⬆</div>
       <img class="phone-img" src="./phone.png" alt="Drag to main image" draggable="false" />
@@ -421,9 +423,12 @@
         function showArrowBriefly() {
           if (window._updateArrow) window._updateArrow();
           ph.classList.add('arrow-visible');
+          const hint = document.getElementById('dragHint');
+          if (hint) { hint.classList.add('visible'); }
           clearTimeout(ph._arrowTimer);
           ph._arrowTimer = setTimeout(function() {
             ph.classList.remove('arrow-visible');
+            if (hint) hint.classList.remove('visible');
           }, 2000);
         }
 

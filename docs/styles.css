@@ -627,6 +627,32 @@ h1 em {
 .conclusion-block p:last-child { margin-bottom: 0; }
 .conclusion-block strong { color: inherit; font-weight: 700; }
 
+/* ── Drag hint toast ── */
+.drag-hint {
+  position: fixed;
+  right: 90px;
+  bottom: 94px;
+  background: rgba(12, 3, 0, 0.88);
+  border: 1px solid rgba(212,168,83,0.3);
+  color: rgba(240,226,196,0.75);
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  padding: 7px 14px;
+  border-radius: 20px;
+  pointer-events: none;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s, transform 0.25s;
+  white-space: nowrap;
+  z-index: 102;
+}
+.drag-hint.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* ── Tag popup ── */
 .tag-popup {
   position: fixed;
