@@ -282,6 +282,8 @@
     </button>
 
     <script>
+      document.addEventListener('contextmenu', e => e.preventDefault());
+
       function toggleLang() {
         const html = document.documentElement;
         html.classList.contains('lang-kr') ? html.classList.replace('lang-kr','lang-en') : html.classList.replace('lang-en','lang-kr');
