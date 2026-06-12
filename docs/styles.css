@@ -16,6 +16,12 @@ body {
   min-height: 100vh;
   color: var(--dim);
   font-family: 'Playfair Display', serif;
+  -webkit-user-select: none;
+  user-select: none;
+}
+img {
+  -webkit-touch-callout: none;
+  pointer-events: none;
 }
 
 /* ── Global Korean font override ── */
@@ -695,6 +701,8 @@ h1 em {
   align-items: center;
   cursor: grab;
   user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
   animation: phone-bob 2.4s ease-in-out infinite;
 }
 .phone-widget.dragging {
