@@ -4,7 +4,7 @@
 
 **What if a card reader told your fortune?**
 
-→ **[View project page](https://chaeyounghuh.github.io/fortune/)**
+→ **[View project page (best on PC)](https://chaeyounghuh.github.io/fortune/)**
 → **[Try the fortune site](https://fortune-lemon.vercel.app/)**
 
 ---
