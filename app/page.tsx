@@ -118,8 +118,8 @@ export default async function Home({
       <ShareButton targetId="fortune-slip" />
 
       <p
-        className="mt-8 text-sm opacity-30"
-        style={{ color: "#c8a96e", fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontSize: "1.1rem" }}
+        className="mt-10 text-lg opacity-30"
+        style={{ color: "#c8a96e", fontFamily: "var(--font-playfair), serif", fontStyle: "italic", fontSize: "3.5rem" }}
       >
         by <a href="https://cyhuh.com" target="_blank" className="underline">cyhuh.com</a>
       </p>

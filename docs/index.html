@@ -1,77 +1,416 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" class="lang-kr">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>KAIST Tag Fortune</title>
-    <meta name="description" content="NFC 태그 하나로 오늘의 운세를. KAIST Tag Fortune 프로젝트." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@3.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <main>
-
       <section class="hero">
-        <p class="eyebrow">ID20012(A) Design Studio 1</p>
-        <h1>KAIST Tag Fortune</h1>
-        <p class="subtitle">Tap your card. Receive your fortune.</p>
+        <p class="eyebrow">ID20012(A) · Design Studio 1</p>
+        <h1>KAIST<br><em>Tag Fortune</em></h1>
+        <p class="subtitle">
+          <span class="en">What if a card reader told your fortune?</span>
+          <span class="kr">카드 리더기로 운세를 볼 수 있다면?</span>
+        </p>
       </section>
 
       <section class="image-section">
-        <div class="slip-wrapper">
-          <img src="./fortune.png" alt="Tag Fortune — fortune slip on phone screen" />
+        <div class="site-photo-wrap">
+          <img class="ribbon-overlay" src="./ribbon.webp" alt="" aria-hidden="true" />
+          <img class="site-photo" src="./IMG_5288.jpg" alt="Installation site photo" />
+          <!-- fortune cookie overlay: edit .fortune-overlay in styles.css to adjust top/right/width -->
+          <img class="fortune-overlay" src="./fortune.png" alt="" aria-hidden="true" />
         </div>
       </section>
 
       <section class="about">
-        <div class="divider"><span>✦</span></div>
-        <h2>About the Project</h2>
-        <p>
-          KAIST Tag Fortune is a lightweight NFC interaction installed near the building entrance.
-          When students tap their access card to enter, a small prompt invites them to also tap
-          the NFC reader beside the door — and in return, they receive a short fortune for the day.
-          The intervention takes under three seconds, adds no friction to the existing flow, and
-          turns a routine gesture into a moment of pause and small delight.
-        </p>
-        <p>
-          The web experience mirrors that physical slip of paper: a single fortune appears on a
-          warm, aged-paper card against a dark background. Each tag generates a unique fortune
-          and a lucky color, both derived from the tag token so the result is consistent but
-          unpredictable across different cards.
-        </p>
+        <p class="section-label">About</p>
+        <div class="en">
+          <p>A <strong>fake NFC card reader</strong> installed at the KAIST ID building entrance. This project started from a question: when are people in daily life forced to put down their phones? If you can catch that moment, wouldn't it be easier to nudge them toward a different interaction?<br>The two interaction points identified inside the ID building were: tapping an ID card to enter, and pressing the elevator button. Starting with the entrance, the idea became an object that looks just like a real card reader — but leads students who tap their phone to enter toward a <strong>fortune cookie page</strong> instead.</p>
+          <p><strong>Q. Why fortune?<br>A. Inspired by NFC fortune keyrings.</strong><br>NFC-based fortune keyrings have proven genuinely popular — people carry them and check a freshly generated fortune each day. The premise that people are interested in their own fortune was treated as already validated, and the project built from there.</p>
+          <p>When the fake card key is tapped, the embedded NFC tag redirects the user to a fortune cookie website. The site is kept as simple as possible — a single screen styled after the slip inside a fortune cookie, so users can engage without any friction.<br>Each NFC tag carries a <strong>unique token</strong>, so a new fortune only appears by tapping again — not by refreshing. Visit counts to the main page are tracked to measure the project's reach.</p>
+        </div>
+        <div class="kr">
+          <p>KAIST ID 건물 입구에 설치한 <strong>가짜 NFC 카드 리더기</strong>입니다.<br>이 프로젝트는 일상생활에서 늘 핸드폰만을 보고 있는 사람들이 언제 강제로 폰을 못 보게 되는가? 그 때를 노리면 다른 행동을 유도하는 것이 쉽지 않을까? 하는 생각에서 시작되었습니다. 해당 관점에서 찾은 산업디자인과 건물 내의 interaction 포인트는 건물 출입을 위해 ID카드를 클릭할 때와, 엘리베이터 버튼을 클릭할 때 이렇게 2개였습니다.<br>그 중에서도 먼저 출입문에 대해서 생각해보았습니다. "어떻게 하면 재미있는 상호작용을 유도할까?" 하여 떠올린 것이, 카드키를 태그해야 하는 카드 리더기와 완벽하게 같지만 조금 다른 상호작용을 만드는 오브젝트였습니다. 핸드폰으로 모바일 학생증 카드를 태그해 들어오는 학생들에게 이 오브젝트도 태그해 보도록 유도하고, 포춘쿠키를 여는 것과 같이 <strong>오늘의 운세 페이지</strong>를 보여줍니다.</p>
+          <p><strong>Q. 왜 하필 운세인가요?<strong><br></strong>A. 운세 키링에서 아이디어를 얻었습니다. </strong><br>시중에 나오는 NFC태깅을 이용한 운세 키링은 실제로 많은 인기를 끌었습니다. 사용자들이 해당 키링을 가지고 다니며, 매일마다 생성되는 다른 운세를 확인합니다. 사람들이 본인의 운세를 보는 것에 관심을 가진다는 가설은 이미 검증되었다고 간주하고 해당 프로젝트를 시작하였습니다.</p>
+          <p>핸드폰으로 해당 가짜 카드키를 태그하였을 때, 내부의 NFC 태그가 사용자를 포춘쿠키 웹사이트로 이동시킵니다.<br>해당 웹사이트는 포춘쿠키 속 쪽지를 그대로 옮겼습니다. 최대한 심플하게, '포춘쿠키 안의 쪽지'의 디자인을 따라 해당 쪽지가 나타나는 단일 화면으로만 구성하여, 사용자가 부담 없이 이용할 수 있도록 했습니다. <br>NFC 태그마다 고유 토큰이 부여되어, 사용자가 굳이 url의 해쉬값을 바꾸지 않는 한 다시 태깅해야지만 새로운 운세를 볼 수 있도록 하였습니다. 메인 페이지로 진입하는 방문자수를 트래킹하여 이 프로젝트의 효과를 측정할 수 있도록 하였습니다.</p>
+        </div>
       </section>
 
       <section class="details">
-        <div class="detail-card">
-          <p class="detail-label">Context</p>
-          <p class="detail-value">KAIST building entrance, NFC tap point</p>
+        <div class="detail-row">
+          <p class="detail-label"><span class="en">Location</span><span class="kr">위치</span></p>
+          <p class="detail-value"><span class="en">KAIST ID building entrance</span><span class="kr">KAIST ID 건물 입구</span></p>
         </div>
-        <div class="detail-card">
-          <p class="detail-label">Interaction</p>
-          <p class="detail-value">Fake card key reader tap → fortune + lucky color</p>
+        <div class="detail-row">
+          <p class="detail-label"><span class="en">Interaction</span><span class="kr">인터랙션</span></p>
+          <p class="detail-value"><span class="en">Fake card reader tap → Fortune Cookie slip (fortune + lucky color)</span><span class="kr">가짜 카드 리더기 태그 → 포춘쿠키 쪽지 (운세 + 행운 색상)</span></p>
         </div>
-        <div class="detail-card">
+        <div class="detail-row">
+          <p class="detail-label"><span class="en">Installation Period</span><span class="kr">설치 기간</span></p>
+          <p class="detail-value">2026. 6. 4 — 6. 11</p>
+        </div>
+        <div class="detail-row">
           <p class="detail-label">Stack</p>
           <p class="detail-value">Next.js · Upstash Redis · Vercel</p>
         </div>
       </section>
 
       <section class="cta-section">
-        <p class="cta-prompt">View the deployed fortune site</p>
-        <a href="https://fortune-lemon.vercel.app/" target="_blank" class="cta-btn cta-btn--large">
-          Open Tag Fortune
-        </a>
-        <a href="https://github.com/ChaeYoungHuh/fortune" target="_blank" class="ghost-btn">
-          View on GitHub
-        </a>
+        <a href="https://github.com/ChaeYoungHuh/fortune" target="_blank" class="cta-btn cta-btn--primary">View on GitHub ↗</a>
       </section>
 
+      <section class="project-details">
+        <p class="section-label">Project Details</p>
+
+        <div class="proto-row">
+          <div class="proto-left">
+            <div class="proto-label">
+              <span class="proto-label-first">First</span>
+              <span class="proto-label-main">prototype</span>
+            </div>
+            <p class="proto-idea">
+              <span class="en">The original concept was a <strong>gold bar-shaped fake card reader</strong>.<br>To avoid making it too identical to the real one, the initial design went with a yellow version — same shape, different color. However, after actually painting it with lacquer, the yellow product made it hard to see the connection to the real card reader, and the fun of "same reader, different interaction" was lost. <strong>Black was adopted instead.</strong><br><br>Painted with black lacquer, the text "CARD" was clumsily replaced with "LUCKY," and the red Sesco-style label on top was reworked into a four-leaf clover.</span>
+              <span class="kr">처음 아이디어는 <strong>골드바 모양의 가짜 카드 리더기</strong>였습니다.<br>실제 카드 키와 너무 비슷하게 만들면 혼동을 줄 것 같아, 기존 리더기의 모양을 하고 있으나 색이 다른 노란색 가짜 카드 리더기를 구상했습니다. <br>그러나, 실제로 락커로 색깔을 칠해보고 나니 노란색의 프로덕트는 원래의 카드 리더기와의 유사성을 설명하기 힘들었을 뿐더러, '같은 카드 리더기지만 다른 상호작용을 하네?'하는 데에서 오는 재미가 없다고 판단했습니다. 이에 검은색을 채택하였습니다. <br><br>검은 락커로 칠하고, 조금 어설픈 글씨로 CARD의 글씨를 LUCKY로 바꾸었고, 위의 '세스코'에 해당하는 빨간색 라벨은 네잎클로버를 그려 변형했습니다.</span>
+            </p>
+          </div>
+          <div class="proto-stage">
+            <img class="proto-img" src="./proto.png" alt="Prototype" />
+            <img class="hand-img" src="./hand.png" alt="Hand tapping" />
+          </div>
+        </div>
+
+        <div class="pre-install-block">
+          <p class="section-label"><span class="en">Pre-installation</span><span class="kr">설치 전 준비</span></p>
+          <div class="callout-row">
+            <div class="callout-emoji-block">
+              <span class="callout-emoji">👩‍🎨</span>
+              <div class="callout callout--wide-text">
+                <div class="callout-text">
+                  <p class="callout-heading"><span class="en">Materials</span><span class="kr">재료</span></p>
+                  <ul class="callout-list">
+                    <li>
+                      <span class="en">Plastic mini transparent case <br>- bought from Coupang with similar size</span>
+                      <span class="kr">플라스틱 미니 투명 케이스 - 쿠팡에서 비슷한 크기로 구매</span>
+                    </li>
+                    <li>
+                      <span class="en">NFC tag</span>
+                      <span class="kr">NFC 태그</span>
+                    </li>
+                    <li>
+                      <span class="en">Lacquer spray (black/yellow)</span>
+                      <span class="kr">락커 스프레이 (검정/노랑)</span>
+                    </li>
+                    <li>
+                      <span class="en">Paper</span>
+                      <span class="kr">종이</span>
+                    </li>
+                  </ul>
+    
+                  </ul>
+                  <p class="callout-note">
+                    <span class="en">Measured the dimensions of the real reader to find a case with a similar size. After acquiring one, the painting process began. Tested <strong>yellow first</strong> — but switched to black to better match the look of the real scanner.</span>
+                    <span class="kr">비슷한 크기의 플라스틱 케이스를 구매하기 위해 사이즈를 측정했습니다. <br>그 후 채색 작업을 거쳤습니다. 처음엔 <strong>노란색</strong>을 시도했지만 실제 리더기와 비슷하게 만들기 위하여 검정색으로 선택했습니다.</span>
+                  </p>
+                  <div class="callout-lacker">
+                    <div><img src="./lacker.png" alt="Painting with lacquer" /></div>
+                  </div>
+                </div>
+                <div class="callout-images">
+                  <div class="callout-main-img">
+                    <img src="./kakao.png" alt="KakaoTalk asking for reference photo" />
+                    <div class="callout-inset">
+                      <img src="./plasticcase.jpg" alt="Coupang plastic case" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="callout-emoji-block">
+              <span class="callout-emoji">👩‍💻</span>
+              <div class="callout">
+                <div class="callout-text">
+                  <p class="callout-heading"><span class="en">Development</span><span class="kr">개발</span></p>
+                  <ul class="callout-list">
+                    <li><span class="en">Next.js + TypeScript</span><span class="kr">Next.js + TypeScript</span></li>
+                    <li><span class="en">Upstash Redis — visit tracking</span><span class="kr">Upstash Redis — 방문자 추적</span></li>
+                    <li><span class="en">Deployed on Vercel</span><span class="kr">Vercel 배포</span></li>
+                  </ul>
+                  <p class="callout-note">
+                    <span class="en"><strong>Hash-based URL routing</strong> prevents new fortune reveals from simple refreshes. Each NFC tap redirects to a unique token endpoint — same token always shows the same fortune. Visit counts tracked via <strong>Redis NX flag</strong> to avoid double-counting.</span>
+                    <span class="kr"><strong>해시 기반 URL</strong>로 새로고침 시 새 운세가 나오는 것을 방지합니다. NFC 태그 시 고유 토큰 엔드포인트로 이동하며, 같은 토큰은 항상 같은 운세를 보여줍니다. <strong>Redis NX 플래그</strong>로 중복 카운트 없이 방문자를 추적합니다.</span>
+                  </p>
+                </div>
+                <div class="callout-images callout-images--dev">
+                  <div class="callout-img-row">
+                    <div class="callout-img-item">
+                      <img src="./fortune_popup.gif" alt="Fortune site UI" />
+                    </div>
+                    <div class="callout-img-item callout-img-item--redus">
+                      <img src="./redus.png" alt="Redis visit stats" />
+                      <p class="callout-caption"><span class="en">Redis stats</span><span class="kr">Redis 방문 통계</span></p>
+                    </div>
+                  </div>
+                  <div class="callout-img-item">
+                    <img src="./fortune_list.png" alt="Fortune list code" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 1: gif starts at Phase 1 header level -->
+        <div class="phase-block phase-block--1">
+          <div class="phase-with-gif">
+            <div class="phase-main-col">
+              <div class="phase-header">
+                <span class="phase-tag">Phase 1</span>
+                <span class="phase-date">6/4 — 6/8 AM</span>
+              </div>
+              <p class="phase-location"><span class="en">Beside the entrance of ID building</span><span class="kr">산업디자인과 건물 입구 옆</span></p>
+              <p class="phase-desc">
+                <span class="en"><br>Installed <strong>slightly away</strong> from the real scanner to avoid being mistaken for it. Interaction was highest on the <strong>first day</strong> and gradually declined after. Since students already tap their phones to enter, the barrier to one more tap was low — the result was more visitors than expected.</span>
+                <span class="kr"><br>실제 카드 리더기로 오해하지 않도록 <strong>입구에서 약간 떨어뜨려</strong> 설치했습니다. <br><strong>첫날</strong> 설치하였을 때 인터랙션이 가장 많았고 이후 점차 감소했습니다. <br>이미 폰으로 태그하는 습관이 있어 추가 인터랙션의 진입 장벽이 낮아서인지, <br>기대보다 많은 방문자수가 발생했습니다.</span>
+              </p>
+            </div>
+            <div class="phase-gif-block">
+              <img class="phase-gif" src="./interact_1.gif" alt="Installation interaction at site" />
+              <p class="callout-caption"><span class="en">Installation at site</span><span class="kr">설치 현장</span></p>
+            </div>
+          </div>
+          <div class="chart-grid">
+            <div class="chart-wrap">
+              <p class="chart-label"><span class="en">Taps / half-day</span><span class="kr">반일별 태그 수</span></p>
+              <canvas id="chart-p1-bar"></canvas>
+            </div>
+            <div class="chart-wrap">
+              <p class="chart-label"><span class="en">Cumulative</span><span class="kr">누적</span></p>
+              <canvas id="chart-p1-line"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <!-- Phase 2: image left, text right-aligned -->
+        <div class="phase-block phase-block--2">
+          <div class="phase-with-img-left">
+            <div class="phase-img-left-block">
+              <img class="phase-img" src="./IMG_5291.jpg" alt="Installation at elevator" />
+              <p class="callout-caption"><span class="en">Elevator button panel</span><span class="kr">엘리베이터 버튼 위 설치</span></p>
+            </div>
+            <div class="phase-text-right">
+              <div class="phase-header">
+                <span class="phase-tag">Phase 2</span>
+                <span class="phase-date">6/8 AM — 6/11 AM</span>
+              </div>
+              <p class="phase-location"><span class="en">On the elevator button panel at ID building</span><span class="kr">산업디자인과 건물 엘리베이터 버튼 위</span></p>
+              <p class="phase-desc">
+                <span class="en"><br>Relocated based on a suggestion that the elevator position might attract more interactions — running it as a second experiment. The count <strong>didn't increase significantly</strong>. The pool of people using the building is fairly fixed, and many had already encountered the object in Phase 1, making a direct comparison difficult.</span>
+                <span class="kr"><br>엘리베이터 버튼 위가 더 유리할 것이라는 제안을 받아 위치를 옮겨 2차 실험을 진행해보았습니다. 인터랙션 수는 <strong>크게 늘지 않았습니다</strong>. 해당 건물을 사용하는 사람들은 어느정도 정해져있어 Phase 1에서 이미 해당 오브젝트를 인식한 사람이 많았고, 직접 비교가 어려웠습니다.</span>
+              </p>
+            </div>
+          </div>
+          <div class="chart-grid">
+            <div class="chart-wrap">
+              <p class="chart-label"><span class="en">Taps / half-day</span><span class="kr">반일별 태그 수</span></p>
+              <canvas id="chart-p2-bar"></canvas>
+            </div>
+            <div class="chart-wrap">
+              <p class="chart-label"><span class="en">Cumulative</span><span class="kr">누적</span></p>
+              <canvas id="chart-p2-line"></canvas>
+            </div>
+          </div>
+        </div>
+
+        <div class="phase-block phase-block--all">
+          <div class="phase-header">
+            <span class="phase-tag">Overall</span>
+            <span class="phase-date"><span class="en">Total 60 taps</span><span class="kr">총 60회 태그</span></span>
+          </div>
+          <p class="phase-location"><span class="en">Phase 1 + Phase 2 combined</span><span class="kr">전체 기간 합산</span></p>
+          <div class="chart-wrap chart-wrap--full">
+            <p class="chart-label"><span class="en">Cumulative — Phase 1 vs Phase 2</span><span class="kr">Phase 1 · Phase 2 누적 비교</span></p>
+            <canvas id="chart-all"></canvas>
+          </div>
+        </div>
+
+        <div class="conclusion-block">
+          <p class="section-label conclusion-label"><em>Conclusion</em></p>
+          <p class="conclusion-lead">
+            <span class="en"><strong>60 visits over 8 days.</strong> Making people adopt a new behavior was expected to be very difficult — but people found more fun in it than anticipated, and didn't hesitate much to try a new interaction.</span>
+            <span class="kr"><strong>8일간 총 60번의 방문이 이루어졌습니다.</strong> 새로운 행동을 하게 만들기 굉장히 어렵겠다고 예상했는데, 사람들이 생각보다 재미를 느꼈고 새로운 인터랙션을 하는 데에 크게 망설이지 않았습니다.</span>
+          </p>
+          <p>
+            <span class="en">This connects to the <strong>zero-friction principle</strong>. Embedding the interaction inside an existing routine (tapping in to enter the building) nearly eliminated the barrier to participation. Those who understood the context saw the <strong>"fake card reader"</strong> not as an obstruction, but as a fun, event-like product.</span>
+            <span class="kr">이것을 <strong>제로 프릭션 원칙</strong>과 연관지을 수 있습니다. 기존 루틴(태그하고 입장) 안에 인터랙션을 넣어 참여 장벽을 거의 없애려고 하였습니다. 맥락을 이해한 사람들은 <strong>"가짜 카드 리더기"</strong>라는 설정을 방해물이 아닌 재미있는 이벤트성 프로덕트로 받아들였습니다.</span>
+          </p>
+          <p>
+            <span class="en">To drive continued engagement beyond the first encounter, there needs to be a <strong>reason to return</strong>. It would be interesting to experiment with making the site more compelling — encouraging people to make this tagging action a part of their daily building entry routine.</span>
+            <span class="kr">처음 한 번의 인식과 사용 후에도 지속적인 참여를 유도하려면 <strong>다시 찾아올 이유</strong>가 필요합니다. 본인의 건물 출입 루틴에 해당 태깅 액션을 추가할 수 있도록 사이트를 더 매력적으로 만들어 실험해봐도 재미있을 것 같습니다.</span>
+          </p>
+        </div>
+
+      </section>
+      
       <footer>
         <p>by <a href="https://cyhuh.com" target="_blank">cyhuh.com</a></p>
       </footer>
-
     </main>
+
+    <div id="tagPopup" class="tag-popup">
+      <span id="tagLabel">tagging...</span>
+      <span id="tagCount" class="tag-count">3</span>
+    </div>
+
+    <div class="phone-widget" id="phoneWidget">
+      <div class="phone-arrow" aria-hidden="true">⬆</div>
+      <img class="phone-img" src="./phone.png" alt="Drag to main image" draggable="false" />
+      <p class="phone-caption">tag this phone<br>at the fake reader!</p>
+    </div>
+
+    <button class="lang-toggle" onclick="toggleLang()" aria-label="언어 전환">
+      <span class="en">KR</span><span class="kr">EN</span>
+    </button>
+
+    <script>
+      function toggleLang() {
+        const html = document.documentElement;
+        html.classList.contains('lang-kr') ? html.classList.replace('lang-kr','lang-en') : html.classList.replace('lang-en','lang-kr');
+      }
+      window.addEventListener('mousemove', e => {
+        const count = Math.random() < 0.5 ? 2 : 1;
+        for (let i = 0; i < count; i++) {
+          const dot = document.createElement('span');
+          dot.className = 'sparkle-dot';
+          const size = Math.random() * 3.5 + 1.5;
+          dot.style.cssText = `left:${e.clientX+(Math.random()-0.5)*12}px;top:${e.clientY+(Math.random()-0.5)*12}px;width:${size}px;height:${size}px;--dx:${(Math.random()-0.5)*24}px;`;
+          document.body.appendChild(dot);
+          dot.addEventListener('animationend', () => dot.remove(), { once: true });
+        }
+      });
+
+      const P1=["2026-06-04T15:45:09","2026-06-04T16:25:29","2026-06-04T18:06:57","2026-06-04T18:35:03","2026-06-04T18:54:02","2026-06-04T18:54:13","2026-06-04T18:54:19","2026-06-04T18:54:20","2026-06-04T18:54:24","2026-06-04T18:54:50","2026-06-04T18:55:53","2026-06-04T18:56:03","2026-06-04T19:04:04","2026-06-04T19:46:06","2026-06-04T22:50:34","2026-06-05T00:04:57","2026-06-05T00:05:12","2026-06-05T08:46:20","2026-06-05T09:41:41","2026-06-05T14:12:05","2026-06-05T15:04:13","2026-06-05T15:37:09","2026-06-05T18:36:39","2026-06-05T19:14:03","2026-06-05T19:14:51","2026-06-05T19:41:54","2026-06-05T19:50:14","2026-06-06T06:43:59","2026-06-06T12:31:08","2026-06-06T12:31:23","2026-06-06T15:24:10","2026-06-06T21:56:29","2026-06-06T21:56:36","2026-06-07T17:38:45","2026-06-07T17:40:08"];
+      const P2=["2026-06-08T10:23:41","2026-06-08T10:41:26","2026-06-08T13:24:43","2026-06-08T13:25:25","2026-06-08T15:09:49","2026-06-08T16:20:25","2026-06-08T17:05:46","2026-06-09T09:02:09","2026-06-09T10:55:42","2026-06-09T13:07:20","2026-06-09T13:07:36","2026-06-09T13:43:02","2026-06-09T13:58:14","2026-06-09T19:41:39","2026-06-09T21:00:52","2026-06-10T08:32:33","2026-06-10T12:17:29","2026-06-10T12:44:36","2026-06-10T13:30:54","2026-06-10T13:31:03","2026-06-10T16:15:43","2026-06-10T16:43:41","2026-06-10T19:37:40","2026-06-10T19:40:03","2026-06-11T07:52:55"];
+
+      const GOLD='rgba(240,226,196,0.88)',GOLD_DIM='rgba(240,226,196,0.22)',GOLD_F='rgba(240,226,196,0.06)';
+      const TEAL='rgba(90,168,168,1)',TEAL_DIM='rgba(90,168,168,0.25)',TEAL_F='rgba(90,168,168,0.07)';
+      const TEXT_C='rgba(180,170,155,0.5)',GRID_C='rgba(255,255,255,0.04)';
+      const isKr=()=>document.documentElement.classList.contains('lang-kr');
+      const baseOpts=color=>({responsive:true,maintainAspectRatio:true,animation:{duration:600},plugins:{legend:{display:false},tooltip:{backgroundColor:'#1e0e00',borderColor:'rgba(200,169,110,0.2)',borderWidth:1,titleColor:'#e8d5a3',bodyColor:'rgba(200,169,110,0.75)',padding:10,cornerRadius:2}},scales:{x:{ticks:{color:TEXT_C,font:{size:10}},grid:{color:GRID_C},border:{color:'transparent'}},y:{ticks:{color:TEXT_C,font:{size:10},stepSize:1},grid:{color:GRID_C},border:{color:'transparent'},beginAtZero:true}}});
+      const toBuckets=dates=>{const m={};for(const d of dates){const dt=new Date(d);const k=`${dt.getMonth()+1}/${dt.getDate()} ${dt.getHours()<12?'AM':'PM'}`;m[k]=(m[k]||0)+1;}return Object.entries(m);};
+      const toCumul=(dates,offset=0)=>dates.map((d,i)=>({x:new Date(d),y:offset+i+1}));
+      function makeBar(id,data,color,dimColor){const b=toBuckets(data);new Chart(document.getElementById(id),{type:'bar',data:{labels:b.map(x=>x[0]),datasets:[{data:b.map(x=>x[1]),backgroundColor:dimColor,borderColor:color,borderWidth:1,borderRadius:2,hoverBackgroundColor:color.replace('1)','0.5)')}]},options:{...baseOpts(color),plugins:{...baseOpts(color).plugins,tooltip:{...baseOpts(color).plugins.tooltip,callbacks:{label:i=>isKr()?`${i.raw}회`:`${i.raw} taps`}}}}});}
+      function makeLine(id,data,color,fill){new Chart(document.getElementById(id),{type:'line',data:{datasets:[{data:toCumul(data),borderColor:color,backgroundColor:fill,borderWidth:1.5,pointRadius:2.5,pointBackgroundColor:color,fill:true,tension:0.35}]},options:{...baseOpts(color),scales:{x:{...baseOpts(color).scales.x,type:'time',time:{unit:'day',displayFormats:{day:'M/d'}}},y:{...baseOpts(color).scales.y}},payments:{...baseOpts(color).plugins,tooltip:{...baseOpts(color).plugins.tooltip,callbacks:{title:i=>new Date(i[0].parsed.x).toLocaleDateString(isKr()?'ko-KR':'en-US'),label:i=>isKr()?`누적 ${i.parsed.y}회`:`Cumulative: ${i.parsed.y} taps`}}}}});}
+
+      makeBar('chart-p1-bar',P1,GOLD,GOLD_DIM); makeLine('chart-p1-line',P1,GOLD,GOLD_F);
+      makeBar('chart-p2-bar',P2,TEAL,TEAL_DIM); makeLine('chart-p2-line',P2,TEAL,TEAL_F);
+
+      // Phone drag-to-fortune interaction
+      (function(){
+        const ph = document.getElementById('phoneWidget');
+        let dragging = false, ox = 0, oy = 0;
+        ph.addEventListener('mousedown', e => {
+          dragging = true;
+          const r = ph.getBoundingClientRect();
+          ox = e.clientX - r.left; oy = e.clientY - r.top;
+          ph.style.transition = 'none';
+          ph.style.right = 'auto'; ph.style.bottom = 'auto';
+          ph.style.left = r.left + 'px'; ph.style.top = r.top + 'px';
+          ph.classList.add('dragging');
+          e.preventDefault();
+        });
+        document.addEventListener('mousemove', e => {
+          if (!dragging) return;
+          ph.style.left = (e.clientX - ox) + 'px';
+          ph.style.top  = (e.clientY - oy) + 'px';
+        });
+        document.addEventListener('mouseup', e => {
+          if (!dragging) return;
+          dragging = false;
+          ph.classList.remove('dragging');
+          let tagged = false;
+          const photo = document.querySelector('.site-photo-wrap');
+          if (photo) {
+            const pr = photo.getBoundingClientRect();
+            const cx = pr.left + pr.width / 2, cy = pr.top + pr.height / 2;
+            const thresh = Math.min(pr.width, pr.height) * 0.35;
+            if (Math.hypot(e.clientX - cx, e.clientY - cy) < thresh) {
+              tagged = true;
+              ph.classList.add('frozen');
+              showTagCountdown(ph);
+            }
+          }
+          if (!tagged) snapBack(ph);
+        });
+      })();
+
+      function snapBack(ph) {
+        const tw = ph.offsetWidth, th = ph.offsetHeight;
+        const tl = window.innerWidth - 28 - tw, tt = window.innerHeight - 80 - th;
+        ph.style.transition = 'left 0.5s cubic-bezier(0.34,1.56,0.64,1), top 0.5s cubic-bezier(0.34,1.56,0.64,1)';
+        ph.style.left = tl + 'px'; ph.style.top = tt + 'px';
+        setTimeout(() => {
+          ph.style.transition = ''; ph.style.left = ''; ph.style.top = '';
+          ph.style.right = '28px'; ph.style.bottom = '80px';
+        }, 500);
+      }
+
+      function showTagCountdown(ph) {
+        const popup = document.getElementById('tagPopup');
+        const countEl = document.getElementById('tagCount');
+        let n = 3;
+        countEl.textContent = n;
+        document.body.style.overflow = 'hidden';
+        popup.classList.add('visible');
+        const t = setInterval(() => {
+          n--;
+          if (n > 0) { countEl.textContent = n; }
+          else {
+            clearInterval(t);
+            popup.classList.remove('visible');
+            document.body.style.overflow = '';
+            window.open('https://fortune-lemon.vercel.app/', '_blank');
+            ph.classList.remove('frozen');
+            snapBack(ph);
+          }
+        }, 1000);
+      }
+
+      // Dynamic arrow: point from phone toward main image
+      (function(){
+        const phW = document.getElementById('phoneWidget');
+        const arw = phW && phW.querySelector('.phone-arrow');
+        function updateArrow() {
+          if (!arw) return;
+          const photo = document.querySelector('.site-photo-wrap');
+          if (!photo) return;
+          const pr = phW.getBoundingClientRect();
+          const ir = photo.getBoundingClientRect();
+          const deg = Math.atan2(
+            (ir.top + ir.height / 2) - (pr.top + pr.height / 2),
+            (ir.left + ir.width / 2) - (pr.left + pr.width / 2)
+          ) * 180 / Math.PI + 90;
+          arw.style.transform = 'translateX(-50%) rotate(' + deg + 'deg)';
+        }
+        if (phW) {
+          phW.addEventListener('mouseenter', updateArrow);
+          window.addEventListener('scroll', function() {
+            if (arw && parseFloat(getComputedStyle(arw).opacity) > 0) updateArrow();
+          });
+        }
+      })();
+
+      const p1Pts=toCumul(P1),p2Pts=toCumul(P2,P1.length),junction={x:new Date(P1[P1.length-1]),y:P1.length};
+      new Chart(document.getElementById('chart-all'),{type:'line',data:{datasets:[{label:'Phase 1',data:p1Pts,borderColor:GOLD,backgroundColor:GOLD_F,borderWidth:2,pointRadius:2,pointBackgroundColor:GOLD,fill:true,tension:0.3},{label:'Phase 2',data:[junction,...p2Pts],borderColor:TEAL,backgroundColor:TEAL_F,borderWidth:2,pointRadius:ctx=>ctx.dataIndex===0?0:2,pointBackgroundColor:TEAL,fill:true,tension:0.3}]},options:{responsive:true,maintainAspectRatio:true,animation:{duration:600},plugins:{legend:{display:true,reverse:false,labels:{color:'rgba(190,175,150,0.65)',boxWidth:12,padding:16,font:{size:11}}},tooltip:{backgroundColor:'#1e0e00',borderColor:'rgba(200,169,110,0.2)',borderWidth:1,titleColor:'#e8d5a3',bodyColor:'rgba(200,169,110,0.75)',padding:10,cornerRadius:2,callbacks:{title:i=>new Date(i[0].parsed.x).toLocaleDateString(isKr()?'ko-KR':'en-US'),label:i=>isKr()?`${i.dataset.label} 누적 ${i.parsed.y}회`:`${i.dataset.label}: ${i.parsed.y} taps`}}},scales:{x:{type:'time',time:{unit:'day',displayFormats:{day:'M/d'}},ticks:{color:TEXT_C,font:{size:10}},grid:{color:GRID_C},border:{color:'transparent'}},y:{ticks:{color:TEXT_C,font:{size:10},stepSize:5},grid:{color:GRID_C},border:{color:'transparent'},beginAtZero:true}}}});
+    </script>
   </body>
 </html>
