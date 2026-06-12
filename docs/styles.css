@@ -733,6 +733,14 @@ footer {
 footer p { margin: 0; font-size: 0.72rem; font-style: italic; color: var(--gold); opacity: 0.3; }
 footer a { color: inherit; text-decoration: underline; }
 
+@media (hover: none) and (pointer: coarse) {
+  /* mobile: bigger tap target for phone widget */
+  .phone-img { width: 68px; }
+  .phone-caption { font-size: 0.62rem; }
+  .phone-widget { right: 16px; bottom: 70px; }
+  .lang-toggle { bottom: 16px; right: 16px; }
+}
+
 @media (max-width: 600px) {
   main { padding: 60px 20px 80px; }
   .image-section { margin-left: -20px; margin-right: -20px; }
