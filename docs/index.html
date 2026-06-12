@@ -383,7 +383,7 @@
             clearInterval(t);
             popup.classList.remove('visible');
             document.body.style.overflow = '';
-            window.open('https://fortune-lemon.vercel.app/', '_blank');
+            if ('ontouchstart' in window) { window.location.href = 'https://fortune-lemon.vercel.app/'; } else { window.open('https://fortune-lemon.vercel.app/', '_blank'); }
             ph.classList.remove('frozen');
             snapBack(ph);
           }
